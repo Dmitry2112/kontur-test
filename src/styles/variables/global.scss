@@ -1,0 +1,31 @@
+:root {
+  //Fonts
+  --font-family: Inter, sans-serif;
+  --font-line-height: normal;
+
+  --font-size-heading-1: 26px;
+  --font-weight-heading-1: 600;
+  --font-heading-1: var(--font-weight-heading-1) var(--font-size-heading-1) / var(--font-line-height) var(--font-family);
+
+  --font-size-heading-2: 24px;
+  --font-weight-heading-2: 500;
+  --font-heading-2: var(--font-weight-heading-2) var(--font-size-heading-2) / var(--font-line-height) var(--font-family);
+
+  --font-size-text-xl: 20px;
+  --font-weight-text-xl: 400;
+  --font-text-xl: var(--font-weight-text-xl) var(--font-size-text-xl) / var(--font-line-height) var(--font-family);
+
+
+  --font-size-text-l: 18px;
+  --font-weight-text-l: 400;
+  --font-text-l: var(--font-weight-text-l) var(--font-size-text-l) / var(--font-line-height) var(--font-family);
+
+  //Colors
+  --base-bg-01: #F6F6F6;
+  --base-bg-02: #FFFFFF;
+  --base-bg-03: #EBF3FE;
+  --text-01: #3774C6;
+  --text-02: gray;
+  --text-03: black;
+  --accent: #F393B0;
+}
