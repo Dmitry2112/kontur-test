@@ -11,7 +11,7 @@ export class HotelDataService {
   constructor(private readonly _http: HttpClient) {}
 
   public getAllHotels(): Observable<HotelModel[]> {
-    return this._http.get<HotelResponseModel[]>('results')
+    return this._http.get<HotelResponseModel[]>('results?_sort=hotelTitle')
       .pipe(
         map(hotels => {
           return hotels.map(hotel => {
