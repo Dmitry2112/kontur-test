@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
-import {map, Observable, take, tap} from 'rxjs';
+import {map, Observable} from 'rxjs';
 import {HotelModel} from '../../data/models/hotel.model';
 import {HotelDataService} from '../../data/services/hotel-data.service';
 import {AsyncPipe, NgForOf, NgIf} from '@angular/common';
@@ -26,9 +26,13 @@ export class HotelsComponent implements OnInit {
   public ngOnInit(): void {
     this.hotels$ = this._hotelDataService.getAllHotels()
       .pipe(
-        map(hotels => hotels.slice(0, 10)),
-        tap((hotels) => console.log(hotels))
+        map(this.sortHotels)
       );
   }
-}
 
+  private sortHotels(hotels: HotelModel[]): HotelModel[] {
+    return hotels
+      .filter(hotel => hotel?.offers.filter(offer => offer.roomsRemained > 0).length > 0)
+      .slice(0, 10);
+  }
+}
