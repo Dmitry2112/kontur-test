@@ -8,14 +8,14 @@ export class HotelModel {
   public hotelTitle: string = '';
   public cityCentreDistance: string = '';
   public address: string = '';
-  public thumbnailUrl: string = '';
+  public thumbnailUrl: string = 'assets/images/default-img.jpg';
   public offers: OfferModel[] = [];
   public fromDto(dto: HotelResponseModel): void {
     this.id = dto.id;
     this.hotelTitle = dto.hotelTitle;
     this.cityCentreDistance = dto.cityCentreDistance;
     this.address = dto.address;
-    this.thumbnailUrl = dto.thumbnailUrl;
+    this.thumbnailUrl = dto.thumbnailUrl ?? this.thumbnailUrl;
     this.offers = dto.offers.map(offer => {
       const offerModel = new OfferModel();
       offerModel.fromDto(offer);
