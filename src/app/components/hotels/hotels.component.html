@@ -1,0 +1,10 @@
+<ul
+  class="hotels"
+  *ngIf="hotels$ | async as hotels"
+>
+  <li
+    *ngFor="let hotel of hotels"
+  >
+    <app-hotel-card [hotel]="hotel"></app-hotel-card>
+  </li>
+</ul>

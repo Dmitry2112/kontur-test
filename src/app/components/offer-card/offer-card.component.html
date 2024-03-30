@@ -1,0 +1,16 @@
+<article class="offer-card">
+  <img
+    class="offer-card__img"
+    alt="Фото номера"
+    [src]="imgUrl()"
+  >
+  <div class="offer-card__info">
+    {{offer().title}}
+    {{offer().mealTitle}}
+    {{offer().extraBeds}}
+  </div>
+  <div class="offer-card__rooms-and-price">
+    {{offer().priceInRub}}
+    {{offer().roomsRemained}}
+  </div>
+</article>

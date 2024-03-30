@@ -1,0 +1,19 @@
+<article class="hotel-card">
+  <div class="hotel-card__info">
+    {{hotel().hotelTitle}}
+    {{hotel().address}}
+    {{hotel().cityCentreDistance}}
+    {{hotel().thumbnailUrl}}
+  </div>
+  <ul
+    class="hotel-card__offers-list"
+    *ngIf="hotel().offers.length > 0"
+  >
+    <li
+      class="hotel-card__offers-item"
+      *ngFor="let offer of hotel().offers"
+    >
+      <app-offer-card [offer]="offer"></app-offer-card>
+    </li>
+  </ul>
+</article>
