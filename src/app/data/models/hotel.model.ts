@@ -15,7 +15,9 @@ export class HotelModel {
     this.hotelTitle = dto.hotelTitle;
     this.cityCentreDistance = dto.cityCentreDistance;
     this.address = dto.address;
-    this.thumbnailUrl = dto.thumbnailUrl ?? this.thumbnailUrl;
+    if (dto.thumbnailUrl !== undefined && dto.thumbnailUrl !== '') {
+      this.thumbnailUrl = dto.thumbnailUrl;
+    }
     this.offers = dto.offers.map(offer => {
       const offerModel = new OfferModel();
       offerModel.fromDto(offer);

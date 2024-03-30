@@ -1,0 +1,33 @@
+.hotel-card {
+  background-color: var(--base-bg-03);
+  border-radius: 8px;
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  &__title {
+    font: var(--font-heading-1);
+    color: var(--text-01);
+    margin-bottom: 0.5rem;
+  }
+
+  &__address {
+    display: block;
+    color: var(--text-03);
+  }
+
+  &__city-centre-distance {
+    display: block;
+  }
+
+  &__img {
+    width: 80px;
+    height: 80px;
+    flex: 0.25;
+    margin: auto;
+  }
+}

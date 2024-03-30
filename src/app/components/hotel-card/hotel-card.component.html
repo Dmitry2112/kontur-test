@@ -1,9 +1,21 @@
 <article class="hotel-card">
-  <div class="hotel-card__info">
-    {{hotel().hotelTitle}}
-    {{hotel().address}}
-    {{hotel().cityCentreDistance}}
-    {{hotel().thumbnailUrl}}
+  <div class="hotel-card__container">
+    <div class="hotel-card__info">
+      <h1 class="hotel-card__title">
+        {{hotel().hotelTitle}}
+      </h1>
+      <span class="hotel-card__address">
+      {{hotel().address}}
+    </span>
+      <span class="hotel-card__city-centre-distance">
+      {{hotel().cityCentreDistance}}
+    </span>
+    </div>
+    <img
+      class="hotel-card__img"
+      alt="Фото отеля"
+      [src]="imgUrl()"
+    >
   </div>
   <ul
     class="hotel-card__offers-list"

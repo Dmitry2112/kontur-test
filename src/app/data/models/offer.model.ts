@@ -10,7 +10,9 @@ export class OfferModel {
 
   public fromDto(dto: OfferResponseModel): void {
     this.title = dto.title;
-    this.mealTitle = dto.mealTitle ?? this.mealTitle;
+    if (dto.mealTitle !== undefined && dto.mealTitle !== '') {
+      this.mealTitle = dto.mealTitle;
+    }
     this.extraBeds = dto.extraBeds;
     this.priceInRub = dto.priceInRub;
     this.roomsRemained = dto.roomsRemained ?? this.roomsRemained;

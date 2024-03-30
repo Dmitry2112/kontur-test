@@ -5,12 +5,22 @@
     [src]="imgUrl()"
   >
   <div class="offer-card__info">
-    {{offer().title}}
-    {{offer().mealTitle}}
-    {{offer().extraBeds}}
+    <h2 class="offer-card__title">
+      {{offer().title}}
+    </h2>
+    <span class="offer-card__sub-info">
+      {{offer().mealTitle}}
+    </span>
+    <span class="offer-card__sub-info">
+      Дополнительные места: {{offer().extraBeds}}
+    </span>
   </div>
   <div class="offer-card__rooms-and-price">
-    {{offer().priceInRub}}
-    {{offer().roomsRemained}}
+    <span class="offer-card__rooms-remained">
+      Доступно {{offer().roomsRemained}} номеров
+    </span>
+    <span class="offer-card__price">
+      <b>{{offer().priceInRub}}</b>
+    </span>
   </div>
 </article>
