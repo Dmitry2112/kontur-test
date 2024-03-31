@@ -13,6 +13,16 @@
     font: var(--font-heading-1);
     color: var(--text-01);
     margin-bottom: 0.5rem;
+    display: inline-block;
+
+    &:hover > .hotel-card__copy-icon {
+      opacity: 1;
+    }
+  }
+
+  &__copy-icon {
+    opacity: 0.75;
+    transition-duration: 0.3s;
   }
 
   &__address {

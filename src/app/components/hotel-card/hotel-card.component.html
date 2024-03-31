@@ -1,8 +1,15 @@
 <article class="hotel-card">
   <div class="hotel-card__container">
     <div class="hotel-card__info">
-      <h1 class="hotel-card__title">
+      <h1
+        class="hotel-card__title"
+        (click)="copyHotelLink(hotel().hotelTitle)"
+      >
         {{hotel().hotelTitle}}
+        <img
+          class="hotel-card__copy-icon"
+          src="assets/icons/copy.svg"
+        >
       </h1>
       <span class="hotel-card__address">
       {{hotel().address}}
