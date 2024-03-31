@@ -1,0 +1,27 @@
+.filters {
+  background-color: var(--base-bg-02);
+  border-radius: 8px;
+  padding: 1rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__title {
+    font: var(--font-heading-3);
+    color: var(--text-03)
+  }
+
+  &__reset {
+    font: var(--font-text-l);
+    color: var(--text-02);
+    border: 0;
+    border-radius: 0;
+    background: var(--base-bg-02);
+    text-decoration: none;
+  }
+}
