@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {map, Observable} from 'rxjs';
+import {map, Observable, take} from 'rxjs';
 import {HotelModel} from '../models/hotel.model';
 import {HotelResponseModel} from '../response-models/hotel.response-model.interface';
 
@@ -20,6 +20,20 @@ export class HotelDataService {
 
             return hotelModel;
           })
+        })
+      )
+  }
+
+  public getHotelByTitle(hotelTitle: string): Observable<HotelModel> {
+    return this._http.get<HotelResponseModel[]>(`results?hotelTitle=${hotelTitle}`)
+      .pipe(
+        map(hotels => {
+          return hotels.map(hotel => {
+            const hotelModel = new HotelModel();
+            hotelModel.fromDto(hotel);
+
+            return hotelModel;
+          })[0]
         })
       )
   }

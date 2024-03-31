@@ -1,0 +1,7 @@
+<main
+  class="about-page"
+  *ngIf="hotel$ | async as hotel"
+>
+  <app-hotel-card [hotel]="hotel"></app-hotel-card>
+</main>
+
