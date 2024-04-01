@@ -20,7 +20,13 @@
       Доступно {{offer().roomsRemained}} номеров
     </span>
     <span class="offer-card__price">
-      <b>{{offer().priceInRub}}</b>
+<!--      <b>{{offer().priceInRub}}</b>-->
+      <b>
+        <tui-money
+        currency="RUB"
+        [value]="offer().priceInRub"
+        ></tui-money>
+      </b>
     </span>
   </div>
 </article>

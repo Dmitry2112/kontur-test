@@ -1,3 +1,7 @@
+:host {
+  --tui-disabled-opacity: 1;
+}
+
 .offer-card {
   background-color: var(--base-bg-02);
   border-bottom-left-radius: 8px;
