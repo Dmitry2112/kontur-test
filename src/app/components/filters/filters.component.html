@@ -7,10 +7,39 @@
       Очистить
     </button>
   </div>
-  <form action="">
-    <label>Адрес</label>
-    <input type="text">
-    <label>Стоимость</label>
-    <input type="text">
+  <form
+    class="filter-form"
+    [formGroup]="filterForm"
+  >
+    <label [tuiLabel]="addressLabel">
+      <tui-input
+        formControlName="address"
+        tuiTextfieldSize="m"
+        [tuiTextfieldLabelOutside]="true"
+        tuiTextfieldIconLeft="tuiIconSearch"
+      ></tui-input>
+    </label>
+    <ng-template #addressLabel>
+      <span class="filter-form__label">
+        Адрес
+      </span>
+    </ng-template>
+
+    <label [tuiLabel]="priceLabel">
+      <tui-input-range
+        formControlName="price"
+        [max]="maxPrice"
+        [min]="minPrice"
+        [quantum]="quantum"
+        [steps]="steps"
+        [tuiTextfieldLabelOutside]="true"
+        [tuiTextfieldSize]="'m'"
+      ></tui-input-range>
+    </label>
+    <ng-template #priceLabel>
+      <span class="filter-form__label">
+        Стоимость, ₽
+      </span>
+    </ng-template>
   </form>
 </article>

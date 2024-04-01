@@ -1,9 +1,9 @@
 import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 import {map, Observable} from 'rxjs';
 import {HotelModel} from '../../data/models/hotel.model';
-import {HotelDataService} from '../../data/services/hotel-data.service';
 import {AsyncPipe, NgForOf, NgIf} from '@angular/common';
 import {HotelCardComponent} from '../hotel-card/hotel-card.component';
+import {FilterService} from '../../services/filter.service';
 
 @Component({
   selector: 'app-hotels',
@@ -21,12 +21,12 @@ import {HotelCardComponent} from '../hotel-card/hotel-card.component';
 export class HotelsComponent implements OnInit {
   public hotels$ = new Observable<HotelModel[]>();
 
-  constructor(private _hotelDataService: HotelDataService) {}
+  constructor(private _filterService: FilterService) {}
 
   public ngOnInit(): void {
-    this.hotels$ = this._hotelDataService.getAllHotels()
+    this.hotels$ = this._filterService.filteredHotels$
       .pipe(
-        map(this.sortHotels)
+        map(this.sortHotels),
       );
   }
 
