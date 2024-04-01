@@ -70,7 +70,7 @@ export class FiltersComponent implements OnInit {
       .subscribe();
   }
 
-  private getSteps(rangePrice$: Observable<RangePrice>, sliderStep: number = 100): Observable<number> {
+  private getSteps(rangePrice$: Observable<RangePrice>, sliderStep: number = 1): Observable<number> {
     return rangePrice$
       .pipe(
         map(range => {
