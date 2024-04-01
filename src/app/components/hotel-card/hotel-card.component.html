@@ -8,7 +8,7 @@
         {{hotel().hotelTitle}}
         <img
           class="hotel-card__copy-icon"
-          src="assets/icons/copy.svg"
+          src="{{isCopied() ? 'assets/icons/check.svg' : 'assets/icons/copy.svg'}}"
         >
       </h1>
       <span class="hotel-card__address">
