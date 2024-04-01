@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {BehaviorSubject, map, Observable, Subject, take, tap} from 'rxjs';
+import {map, Observable} from 'rxjs';
 import {HotelModel} from '../models/hotel.model';
 import {HotelResponseModel} from '../response-models/hotel.response-model.interface';
 

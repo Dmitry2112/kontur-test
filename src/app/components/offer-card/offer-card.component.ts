@@ -1,6 +1,6 @@
-import {ChangeDetectionStrategy, Component, computed, input, OnInit, signal, Signal} from '@angular/core';
+import {ChangeDetectionStrategy, Component, computed, input} from '@angular/core';
 import {OfferModel} from '../../data/models/offer.model';
-import {DomSanitizer, SafeResourceUrl} from '@angular/platform-browser';
+import {DomSanitizer} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-offer-card',

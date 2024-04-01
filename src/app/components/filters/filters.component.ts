@@ -35,7 +35,7 @@ export class FiltersComponent implements OnInit {
 
   public readonly filterForm = new FormGroup({
     address: new FormControl('', {nonNullable: true}),
-    price: new FormControl([0, 0], {nonNullable: true})
+    rangePrice: new FormControl([0, 0], {nonNullable: true})
   });
 
   constructor(
@@ -47,7 +47,7 @@ export class FiltersComponent implements OnInit {
   public ngOnInit(): void {
     this.rangePrice$
       .pipe(
-        tap(range => this.filterForm.controls.price.setValue([range[0], range[1]])),
+        tap(range => this.filterForm.controls.rangePrice.setValue([range[0], range[1]])),
         takeUntil(this._destroy$)
       )
       .subscribe();

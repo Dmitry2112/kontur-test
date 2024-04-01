@@ -8,16 +8,16 @@ import {HotelModel} from '../data/models/hotel.model';
 })
 export class FilterService {
   public address$ = new BehaviorSubject<string>('');
-  public price$ = new BehaviorSubject<number[]>([]);
+  public rangePrice$ = new BehaviorSubject<number[]>([]);
   public filteredHotels$ = new BehaviorSubject<HotelModel[]>([]);
 
   constructor(private _hotelDataService: HotelDataService) {
     this.filterHotels();
   }
 
-  public changeFilters(filters: Partial<{address: string; price: number[]}>): void {
+  public changeFilters(filters: Partial<{address: string; rangePrice: number[]}>): void {
     this.address$.next(filters.address as string);
-    this.price$.next(filters.price as number[]);
+    this.rangePrice$.next(filters.rangePrice as number[]);
 
     this.filterHotels();
   }
@@ -26,18 +26,18 @@ export class FilterService {
     this.address$
       .pipe(
         switchMap(address => this._hotelDataService.getHotelsByAddress(address)),
-        map(hotels => this.filterHotelsByPrice(hotels, this.price$.value)),
+        map(hotels => this.filterHotelsByPrice(hotels, this.rangePrice$.value)),
         tap(hotels => this.filteredHotels$.next(hotels)),
       )
       .subscribe();
   }
 
-  private filterHotelsByPrice(hotels: HotelModel[], price: number[]): HotelModel[] {
-    return price.length > 0
+  private filterHotelsByPrice(hotels: HotelModel[], rangePrice: number[]): HotelModel[] {
+    return rangePrice.length > 0
       ? hotels
         .filter(hotel => {
           const offers = hotel.offers;
-          hotel.offers = offers.filter(offer => (offer.priceInRub >= price[0]) && (offer.priceInRub <= price[1]));
+          hotel.offers = offers.filter(offer => (offer.priceInRub >= rangePrice[0]) && (offer.priceInRub <= rangePrice[1]));
 
           return hotel.offers.length > 0;
         })
