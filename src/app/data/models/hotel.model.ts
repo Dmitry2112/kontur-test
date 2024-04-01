@@ -2,14 +2,12 @@ import {HotelResponseModel} from '../response-models/hotel.response-model.interf
 import {OfferModel} from './offer.model';
 
 export class HotelModel {
-  public id: string = '';
   public hotelTitle: string = '';
   public cityCentreDistance: string = '';
   public address: string = '';
   public thumbnailUrl: string = 'assets/images/default-img.jpg';
   public offers: OfferModel[] = [];
   public fromDto(dto: HotelResponseModel): void {
-    this.id = dto.id;
     this.hotelTitle = dto.hotelTitle;
     this.cityCentreDistance = dto.cityCentreDistance;
     this.address = dto.address;
