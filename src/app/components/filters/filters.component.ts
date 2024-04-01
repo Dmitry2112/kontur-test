@@ -2,7 +2,7 @@ import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {TuiLabelModule, TuiTextfieldControllerModule} from '@taiga-ui/core';
 import {TuiInputModule, TuiInputRangeModule} from '@taiga-ui/kit';
-import {combineLatest, debounceTime, distinctUntilChanged, map, Observable, of, takeUntil, tap} from 'rxjs';
+import {combineLatest, debounceTime, distinctUntilChanged, map, Observable, takeUntil, tap} from 'rxjs';
 import {FilterService} from '../../services/filter.service';
 import {HotelDataService} from '../../data/services/hotel-data.service';
 import {AsyncPipe, NgIf} from '@angular/common';
@@ -34,17 +34,8 @@ export class FiltersComponent implements OnInit {
   public readonly maxPrice$: Observable<number> = this._hotelDataService.getMaxPrice();
   public readonly rangePrice$: Observable<RangePrice> = combineLatest([this.minPrice$, this.maxPrice$]);
   public readonly steps$: Observable<number> = this.getSteps(this.rangePrice$);
-  public readonly filterFormConfig$ = combineLatest([this.rangePrice$, this.steps$])
-    .pipe(
-      map(v => {
-        const filterFormConfig: FilterFormConfig = {
-          rangePrice: v[0],
-          steps: v[1]
-        }
-
-        return filterFormConfig;
-      })
-    );
+  public readonly filterFormConfig$: Observable<FilterFormConfig> = combineLatest([this.rangePrice$, this.steps$])
+    .pipe(map(this.getConfig));
   public readonly quantum = 0.01;
 
   public readonly filterForm = new FormGroup<FilterForm>({
@@ -61,7 +52,10 @@ export class FiltersComponent implements OnInit {
   public ngOnInit(): void {
     this.rangePrice$
       .pipe(
-        tap(range => this.filterForm.controls.rangePrice.setValue([range[0], range[1]])),
+        tap(range => {
+          const [min, max] = range;
+          this.filterForm.controls.rangePrice.setValue([min, max]);
+        }),
         takeUntil(this._destroy$)
       )
       .subscribe();
@@ -76,10 +70,22 @@ export class FiltersComponent implements OnInit {
       .subscribe();
   }
 
-  private getSteps(rangePrice$: Observable<[number, number]>, sliderStep: number = 100): Observable<number> {
+  private getSteps(rangePrice$: Observable<RangePrice>, sliderStep: number = 100): Observable<number> {
     return rangePrice$
       .pipe(
-        map(range => (range[1] - range[0]) / sliderStep)
+        map(range => {
+          const [min, max] = range;
+          return (max - min) / sliderStep;
+        })
       );
+  }
+
+  private getConfig(rangePriceAndSteps: [RangePrice, number]): FilterFormConfig {
+    const [rangePrice, steps] = rangePriceAndSteps;
+
+    return {
+      rangePrice,
+      steps
+    };
   }
 }
