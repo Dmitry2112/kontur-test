@@ -8,8 +8,6 @@ import {HotelResponseModel} from '../response-models/hotel.response-model.interf
   providedIn: 'root'
 })
 export class HotelDataService {
-  public maxPrice$ = new BehaviorSubject<number>(10);
-
   constructor(private readonly _http: HttpClient) {}
 
   public getAllHotels(): Observable<HotelModel[]> {
@@ -54,13 +52,21 @@ export class HotelDataService {
       )
   }
 
-  public getMaxPrice(): void {
-    this.getAllHotels()
+  public getMinPrice(): Observable<number> {
+    return this.getAllHotels()
       .pipe(
         map(hotels =>
-          hotels.sort((a, b) => b.offers[0].priceInRub - a.offers[0].priceInRub)[0].offers[0].priceInRub
-        ),
-        tap(maxPrice => this.maxPrice$.next(maxPrice))
+          hotels.sort((a, b) => a.offers[0]?.priceInRub - b.offers[0]?.priceInRub)[0].offers[0].priceInRub
+        )
+      );
+  }
+
+  public getMaxPrice(): Observable<number> {
+    return this.getAllHotels()
+      .pipe(
+        map(hotels =>
+          hotels.sort((a, b) => b.offers[0]?.priceInRub - a.offers[0]?.priceInRub)[0].offers[0].priceInRub
+        )
       );
   }
 }

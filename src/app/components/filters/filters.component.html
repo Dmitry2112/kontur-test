@@ -10,6 +10,7 @@
   <form
     class="filter-form"
     [formGroup]="filterForm"
+    *ngIf="configFilterForm$ | async as configFilterForm"
   >
     <label [tuiLabel]="addressLabel">
       <tui-input
@@ -28,10 +29,10 @@
     <label [tuiLabel]="priceLabel">
       <tui-input-range
         formControlName="price"
-        [max]="maxPrice"
-        [min]="minPrice"
+        [min]="configFilterForm[0][0]"
+        [max]="configFilterForm[0][1]"
         [quantum]="quantum"
-        [steps]="steps"
+        [steps]="configFilterForm[1]"
         [tuiTextfieldLabelOutside]="true"
         [tuiTextfieldSize]="'m'"
       ></tui-input-range>
