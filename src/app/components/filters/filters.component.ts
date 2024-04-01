@@ -7,6 +7,10 @@ import {FilterService} from '../../services/filter.service';
 import {HotelDataService} from '../../data/services/hotel-data.service';
 import {AsyncPipe, NgIf} from '@angular/common';
 import {TuiDestroyService} from '@taiga-ui/cdk';
+import {FilterForm} from './types/filter-form.type';
+import {FilterFormValues} from './types/filter-form-values.type';
+import {RangePrice} from './types/range-price.type';
+import {FilterFormConfig} from './types/filter-form-config.type';
 
 @Component({
   selector: 'app-filters',
@@ -26,14 +30,24 @@ import {TuiDestroyService} from '@taiga-ui/cdk';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FiltersComponent implements OnInit {
-  public readonly minPrice$ = this._hotelDataService.getMinPrice();
-  public readonly maxPrice$ = this._hotelDataService.getMaxPrice();
-  public readonly rangePrice$ = combineLatest([this.minPrice$, this.maxPrice$]);
-  public readonly steps$ = this.getSteps(this.rangePrice$);
-  public readonly configFilterForm$ = combineLatest([this.rangePrice$, this.steps$]);
+  public readonly minPrice$: Observable<number> = this._hotelDataService.getMinPrice();
+  public readonly maxPrice$: Observable<number> = this._hotelDataService.getMaxPrice();
+  public readonly rangePrice$: Observable<RangePrice> = combineLatest([this.minPrice$, this.maxPrice$]);
+  public readonly steps$: Observable<number> = this.getSteps(this.rangePrice$);
+  public readonly filterFormConfig$ = combineLatest([this.rangePrice$, this.steps$])
+    .pipe(
+      map(v => {
+        const filterFormConfig: FilterFormConfig = {
+          rangePrice: v[0],
+          steps: v[1]
+        }
+
+        return filterFormConfig;
+      })
+    );
   public readonly quantum = 0.01;
 
-  public readonly filterForm = new FormGroup({
+  public readonly filterForm = new FormGroup<FilterForm>({
     address: new FormControl('', {nonNullable: true}),
     rangePrice: new FormControl([0, 0], {nonNullable: true})
   });
@@ -56,7 +70,7 @@ export class FiltersComponent implements OnInit {
       .pipe(
         debounceTime(500),
         distinctUntilChanged(),
-        tap(v => this._filterService.changeFilters(v)),
+        tap((values: Partial<FilterFormValues>) => this._filterService.changeFilters(values)),
         takeUntil(this._destroy$)
       )
       .subscribe();
