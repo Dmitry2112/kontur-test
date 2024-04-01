@@ -43,6 +43,9 @@ export class FiltersComponent implements OnInit {
     rangePrice: new FormControl([0, 0], {nonNullable: true})
   });
 
+  private minCache = 0;
+  private maxCache = 0;
+
   constructor(
     private _filterService: FilterService,
     private _hotelDataService: HotelDataService,
@@ -50,21 +53,31 @@ export class FiltersComponent implements OnInit {
   ) {}
 
   public ngOnInit(): void {
-    this.rangePrice$
-      .pipe(
-        tap(range => {
-          const [min, max] = range;
-          this.filterForm.controls.rangePrice.setValue([min, max]);
-        }),
-        takeUntil(this._destroy$)
-      )
-      .subscribe();
+    this.initFilters();
 
     this.filterForm.valueChanges
       .pipe(
         debounceTime(500),
         distinctUntilChanged(),
         tap((values: Partial<FilterFormValues>) => this._filterService.changeFilters(values)),
+        takeUntil(this._destroy$)
+      )
+      .subscribe();
+  }
+
+  public resetFilters(): void {
+    this.filterForm.reset({address: '', rangePrice: [this.minCache, this.maxCache]});
+  }
+
+  private initFilters(): void {
+    this.rangePrice$
+      .pipe(
+        tap(range => {
+          const [min, max] = range;
+          this.minCache = min;
+          this.maxCache = max;
+          this.filterForm.controls.rangePrice.setValue([min, max]);
+        }),
         takeUntil(this._destroy$)
       )
       .subscribe();

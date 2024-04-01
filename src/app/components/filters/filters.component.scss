@@ -29,6 +29,11 @@
     border-radius: 0;
     background: var(--base-bg-02);
     text-decoration: none;
+    transition-duration: 0.3s;
+
+    &:hover {
+      color: var(--text-03);
+    }
   }
 }
 
