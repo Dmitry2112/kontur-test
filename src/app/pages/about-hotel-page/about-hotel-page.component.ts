@@ -4,7 +4,7 @@ import {HotelDataService} from '../../data/services/hotel-data.service';
 import {Observable, switchMap} from 'rxjs';
 import {HotelModel} from '../../data/models/hotel.model';
 import {AsyncPipe, NgIf} from '@angular/common';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, RouterLink} from '@angular/router';
 
 @Component({
   selector: 'app-about-hotel-page',
@@ -12,7 +12,8 @@ import {ActivatedRoute} from '@angular/router';
   imports: [
     HotelCardComponent,
     AsyncPipe,
-    NgIf
+    NgIf,
+    RouterLink
   ],
   templateUrl: './about-hotel-page.component.html',
   styleUrl: './about-hotel-page.component.scss',

@@ -2,6 +2,17 @@
   class="about-page"
   *ngIf="hotel$ | async as hotel"
 >
-  <app-hotel-card [hotel]="hotel"></app-hotel-card>
+  <div class="about-page__content">
+    <a
+      class="about-page__link"
+      routerLink="/"
+    >
+      <img
+        class="about-page__back-arrow"
+        src="assets/icons/corner-up-left.svg"
+      >
+    </a>
+    <app-hotel-card [hotel]="hotel"></app-hotel-card>
+  </div>
 </main>
 
