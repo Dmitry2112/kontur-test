@@ -30,6 +30,7 @@
     background: var(--base-bg-02);
     text-decoration: none;
     transition-duration: 0.3s;
+    cursor: pointer;
 
     &:hover {
       color: var(--text-03);
