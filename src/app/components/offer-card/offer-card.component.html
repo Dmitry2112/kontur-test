@@ -1,9 +1,11 @@
 <article class="offer-card">
-  <img
-    class="offer-card__img"
-    alt="Фото номера"
-    [src]="imgUrl()"
-  >
+  <div class="offer-card__img-container">
+    <img
+      class="offer-card__img"
+      alt="Фото номера"
+      [src]="imgUrl()"
+    >
+  </div>
   <div class="offer-card__info">
     <h2 class="offer-card__title">
       {{offer().title}}
