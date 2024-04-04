@@ -35,7 +35,10 @@ export class FiltersComponent implements OnInit {
   public readonly rangePrice$: Observable<RangePrice> = this._hotelDataService.getRangePrice();
   public readonly steps$: Observable<number> = this.getSteps(this.rangePrice$);
   public readonly filterFormConfig$: Observable<FilterFormConfig> = combineLatest([this.rangePrice$, this.steps$])
-    .pipe(map(this.getConfig));
+    .pipe(
+      map(this.getConfig),
+      tap(() => this._loadingService.hide())
+    );
   public readonly quantum = 0.01;
 
   public readonly filterForm = new FormGroup<FilterForm>({
@@ -82,7 +85,6 @@ export class FiltersComponent implements OnInit {
           this.minCache = min;
           this.maxCache = max;
           this.filterForm.controls.rangePrice.setValue([min, max]);
-          this._loadingService.hide();
         }),
         takeUntil(this._destroy$)
       )

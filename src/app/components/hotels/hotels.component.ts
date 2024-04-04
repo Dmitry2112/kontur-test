@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
-import {finalize, map, Observable} from 'rxjs';
+import {map, Observable, tap} from 'rxjs';
 import {HotelModel} from '../../data/models/hotel.model';
 import {AsyncPipe, NgForOf, NgIf} from '@angular/common';
 import {HotelCardComponent} from '../hotel-card/hotel-card.component';
@@ -37,7 +37,7 @@ export class HotelsComponent implements OnInit {
     this.hotels$ = this._filterService.filteredHotels$
       .pipe(
         map(this.sortHotels),
-        finalize(this._loadingService.hide)
+        tap(() => this._loadingService.hide())
       );
   }
 
