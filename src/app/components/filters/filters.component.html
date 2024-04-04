@@ -46,4 +46,14 @@
       </span>
     </ng-template>
   </form>
+
+  <div
+    class="loader-container"
+    *ngIf="loading$ | async"
+  >
+    <tui-loader
+      [showLoader]="true"
+      [size]="'l'"
+    ></tui-loader>
+  </div>
 </article>

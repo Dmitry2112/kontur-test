@@ -1,8 +1,8 @@
 import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
-import {TuiLabelModule, TuiTextfieldControllerModule} from '@taiga-ui/core';
+import {TuiLabelModule, TuiLoaderModule, TuiTextfieldControllerModule} from '@taiga-ui/core';
 import {TuiInputModule, TuiInputRangeModule} from '@taiga-ui/kit';
-import {combineLatest, debounceTime, distinctUntilChanged, map, Observable, takeUntil, tap} from 'rxjs';
+import {combineLatest, debounceTime, distinctUntilChanged, finalize, map, Observable, takeUntil, tap} from 'rxjs';
 import {FilterService} from '../../services/filter.service';
 import {HotelDataService} from '../../data/services/hotel-data.service';
 import {AsyncPipe, NgIf} from '@angular/common';
@@ -11,6 +11,7 @@ import {FilterForm} from './types/filter-form.type';
 import {FilterFormValues} from './types/filter-form-values.type';
 import {RangePrice} from './types/range-price.type';
 import {FilterFormConfig} from './types/filter-form-config.type';
+import {LoadingService} from '../../services/loading.service';
 
 @Component({
   selector: 'app-filters',
@@ -22,9 +23,10 @@ import {FilterFormConfig} from './types/filter-form-config.type';
     TuiTextfieldControllerModule,
     TuiInputRangeModule,
     AsyncPipe,
-    NgIf
+    NgIf,
+    TuiLoaderModule
   ],
-  providers: [TuiDestroyService],
+  providers: [TuiDestroyService, LoadingService],
   templateUrl: './filters.component.html',
   styleUrl: './filters.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -41,13 +43,16 @@ export class FiltersComponent implements OnInit {
     rangePrice: new FormControl([0, 0], {nonNullable: true})
   });
 
+  public loading$ = this._loadingService.loading$;
+
   private minCache = 0;
   private maxCache = 0;
 
   constructor(
     private _filterService: FilterService,
     private _hotelDataService: HotelDataService,
-    private _destroy$: TuiDestroyService
+    private _destroy$: TuiDestroyService,
+    private _loadingService: LoadingService
   ) {}
 
   public ngOnInit(): void {
@@ -68,6 +73,8 @@ export class FiltersComponent implements OnInit {
   }
 
   private initFilters(): void {
+    this._loadingService.show();
+
     this.rangePrice$
       .pipe(
         tap(range => {
@@ -75,6 +82,7 @@ export class FiltersComponent implements OnInit {
           this.minCache = min;
           this.maxCache = max;
           this.filterForm.controls.rangePrice.setValue([min, max]);
+          this._loadingService.hide();
         }),
         takeUntil(this._destroy$)
       )

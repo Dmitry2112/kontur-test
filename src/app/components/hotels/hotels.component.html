@@ -8,3 +8,13 @@
     <app-hotel-card [hotel]="hotel"></app-hotel-card>
   </li>
 </ul>
+
+<div
+  class="loader-container"
+  *ngIf="loading$ | async"
+>
+  <tui-loader
+    [showLoader]="true"
+    [size]="'xl'"
+  ></tui-loader>
+</div>

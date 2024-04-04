@@ -4,7 +4,7 @@ import {AsyncPipe, NgForOf, NgIf} from '@angular/common';
 import {OfferCardComponent} from '../offer-card/offer-card.component';
 import {DomSanitizer} from '@angular/platform-browser';
 import {LOCATION, NAVIGATOR} from '@ng-web-apis/common';
-import {switchMap, takeUntil, tap, timer} from 'rxjs';
+import {takeUntil, tap, timer} from 'rxjs';
 import {TuiDestroyService} from '@taiga-ui/cdk';
 import {TuiAlertService} from '@taiga-ui/core';
 
