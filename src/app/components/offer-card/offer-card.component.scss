@@ -11,6 +11,7 @@
   justify-content: space-between;
   gap: 1rem;
   padding: 1rem 2rem;
+  color: var(--text-03);
 
   &__img-container {
     max-width: 175px;
@@ -41,7 +42,7 @@
   &__rooms-and-price {
     flex: 0.9;
     width: 30%;
-    border: 1px var(--text-02) solid;
+    border: 2px var(--border-color) solid;
     border-radius: 8px;
     padding: 1rem 1rem 1.75rem;
     height: max-content;
