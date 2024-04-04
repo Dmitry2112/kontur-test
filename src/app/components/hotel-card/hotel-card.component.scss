@@ -5,6 +5,12 @@
 .hotel-card {
   background-color: var(--base-bg-03);
   border-radius: 8px;
+  box-shadow: var(--tui-shadow);
+  transition-duration: 0.3s;
+
+  &:hover {
+    box-shadow: var(--tui-shadow-hover);
+  }
 
   &__container {
     display: flex;
