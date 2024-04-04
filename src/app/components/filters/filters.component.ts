@@ -30,9 +30,7 @@ import {FilterFormConfig} from './types/filter-form-config.type';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FiltersComponent implements OnInit {
-  public readonly minPrice$: Observable<number> = this._hotelDataService.getMinPrice();
-  public readonly maxPrice$: Observable<number> = this._hotelDataService.getMaxPrice();
-  public readonly rangePrice$: Observable<RangePrice> = combineLatest([this.minPrice$, this.maxPrice$]);
+  public readonly rangePrice$: Observable<RangePrice> = this._hotelDataService.getRangePrice();
   public readonly steps$: Observable<number> = this.getSteps(this.rangePrice$);
   public readonly filterFormConfig$: Observable<FilterFormConfig> = combineLatest([this.rangePrice$, this.steps$])
     .pipe(map(this.getConfig));

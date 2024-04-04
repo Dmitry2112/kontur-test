@@ -3,6 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {map, Observable} from 'rxjs';
 import {HotelModel} from '../models/hotel.model';
 import {HotelResponseModel} from '../response-models/hotel.response-model.interface';
+import {RangePrice} from '../../components/filters/types/range-price.type';
 
 @Injectable({
   providedIn: 'root'
@@ -52,21 +53,25 @@ export class HotelDataService {
       )
   }
 
-  public getMinPrice(): Observable<number> {
+  public getRangePrice(): Observable<RangePrice> {
     return this.getAllHotels()
       .pipe(
-        map(hotels =>
-          hotels.sort((a, b) => a.offers[0]?.priceInRub - b.offers[0]?.priceInRub)[0].offers[0].priceInRub
-        )
+        map(this.calcRangePrice)
       );
   }
 
-  public getMaxPrice(): Observable<number> {
-    return this.getAllHotels()
-      .pipe(
-        map(hotels =>
-          hotels.sort((a, b) => b.offers[0]?.priceInRub - a.offers[0]?.priceInRub)[0].offers[0].priceInRub
-        )
-      );
+  private calcRangePrice(hotels: HotelModel[]): RangePrice {
+    let min = Infinity;
+    let max = -Infinity;
+
+    hotels.forEach(hotel => {
+      const sortedOffers = hotel.offers.sort((a, b) => a?.priceInRub - b?.priceInRub);
+      const [curMin, curMax] = [sortedOffers[0]?.priceInRub, sortedOffers[sortedOffers.length - 1]?.priceInRub];
+
+      min = curMin < min ? curMin : min;
+      max = curMax > max ? curMax : max;
+    })
+
+    return [min, max];
   }
 }
