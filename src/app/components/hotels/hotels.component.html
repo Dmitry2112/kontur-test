@@ -12,12 +12,12 @@
 </ul>
 
 <ng-template #emptyData>
-  <div
+  <span
     class="hotels__empty-data"
     *ngIf="!(loading$ | async)"
   >
     Извините, по Вашему запросу ничего не найдено
-  </div>
+  </span>
 </ng-template>
 
 <div
