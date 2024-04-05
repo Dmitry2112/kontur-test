@@ -28,16 +28,19 @@ export class HotelsComponent implements OnInit {
 
   constructor(
     private _filterService: FilterService,
-    private _loadingService: LoadingService
+    public _loadingService: LoadingService
   ) {}
 
   public ngOnInit(): void {
     this._loadingService.show();
-
-    this.hotels$ = this._filterService.filteredHotels$
+    this.hotels$ = this._filterService.filterHotels()
       .pipe(
         map(this.sortHotels),
-        tap(() => this._loadingService.hide())
+        tap((hotels) => {
+          if (hotels.length > 0) {
+            this._loadingService.hide();
+          }
+        })
       );
   }
 

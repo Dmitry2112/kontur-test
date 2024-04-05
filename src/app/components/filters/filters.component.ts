@@ -2,7 +2,7 @@ import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {TuiLabelModule, TuiLoaderModule, TuiTextfieldControllerModule} from '@taiga-ui/core';
 import {TuiInputModule, TuiInputRangeModule} from '@taiga-ui/kit';
-import {combineLatest, debounceTime, distinctUntilChanged, finalize, map, Observable, takeUntil, tap} from 'rxjs';
+import {combineLatest, debounceTime, distinctUntilChanged, map, Observable, takeUntil, tap} from 'rxjs';
 import {FilterService} from '../../services/filter.service';
 import {HotelDataService} from '../../data/services/hotel-data.service';
 import {AsyncPipe, NgIf} from '@angular/common';

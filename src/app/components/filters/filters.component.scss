@@ -38,6 +38,10 @@
       color: var(--text-03);
     }
   }
+
+  &__loader-container {
+    margin-top: 3rem;
+  }
 }
 
 .filter-form {

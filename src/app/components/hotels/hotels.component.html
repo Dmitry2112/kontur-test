@@ -2,12 +2,23 @@
   class="hotels"
   *ngIf="hotels$ | async as hotels"
 >
-  <li
-    *ngFor="let hotel of hotels"
-  >
-    <app-hotel-card [hotel]="hotel"></app-hotel-card>
-  </li>
+  <ng-container *ngIf="hotels.length > 0; else emptyData">
+    <li
+      *ngFor="let hotel of hotels"
+    >
+      <app-hotel-card [hotel]="hotel"></app-hotel-card>
+    </li>
+  </ng-container>
 </ul>
+
+<ng-template #emptyData>
+  <div
+    class="hotels__empty-data"
+    *ngIf="!(loading$ | async)"
+  >
+    Извините, по Вашему запросу ничего не найдено
+  </div>
+</ng-template>
 
 <div
   class="loader-container"
