@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {map, Observable} from 'rxjs';
+import {catchError, map, Observable, of} from 'rxjs';
 import {HotelModel} from '../models/hotel.model';
 import {HotelResponseModel} from '../response-models/hotel.response-model.interface';
 import {RangePrice} from '../../components/filters/types/range-price.type';
@@ -21,7 +21,8 @@ export class HotelDataService {
 
             return hotelModel;
           })
-        })
+        }),
+        catchError(this.handleError<HotelModel[]>('getAllHotels', []))
       )
   }
 
@@ -35,7 +36,8 @@ export class HotelDataService {
 
             return hotelModel;
           })[0]
-        })
+        }),
+        catchError(this.handleError<HotelModel>('getHotelByTitle'))
       )
   }
 
@@ -49,7 +51,8 @@ export class HotelDataService {
 
             return hotelModel;
           })
-        })
+        }),
+        catchError(this.handleError<HotelModel[]>('getHotelsByAddress', []))
       )
   }
 
@@ -73,5 +76,14 @@ export class HotelDataService {
     })
 
     return [min, max];
+  }
+
+  private handleError<T>(operation = 'operation', result?: T) {
+    return (error: any): Observable<T> => {
+      console.error(error);
+      console.log(`${operation} failed: ${error.message}`);
+
+      return of(result as T);
+    };
   }
 }
