@@ -27,7 +27,6 @@ describe('HotelDataService', () => {
       spyOn(service, 'getAllHotels').and.returnValue(of(hotelsMockForHotelService));
 
       service.getRangePrice().subscribe((range) => {
-        console.log(range)
         expect(range).toEqual(rangePriceMock);
         done();
       })
