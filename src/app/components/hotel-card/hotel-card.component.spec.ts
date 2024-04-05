@@ -1,8 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { HotelCardComponent } from './hotel-card.component';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {HotelCardComponent} from './hotel-card.component';
 import {HotelModel} from '../../data/models/hotel.model';
-import {InputSignal, signal} from '@angular/core';
 
 describe('HotelCardComponent', () => {
   let component: HotelCardComponent;

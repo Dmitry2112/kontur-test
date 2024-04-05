@@ -1,7 +1,5 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { OfferCardComponent } from './offer-card.component';
-import {HotelModel} from '../../data/models/hotel.model';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {OfferCardComponent} from './offer-card.component';
 import {OfferModel} from '../../data/models/offer.model';
 
 describe('OfferCardComponent', () => {
