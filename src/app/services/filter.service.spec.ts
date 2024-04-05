@@ -3,7 +3,7 @@ import {FilterService} from './filter.service';
 import {provideHttpClient} from '@angular/common/http';
 import {provideHttpClientTesting} from '@angular/common/http/testing';
 import {FilterFormValues} from '../components/filters/types/filter-form-values.type';
-import {hotelsMock, hotelsMockAfterFilteringByAddress, hotelsMockAfterFilteringByPrice} from '../../../mocks/hotels';
+import {hotelsMockForFilterService, hotelsMockAfterFilteringByAddress, hotelsMockAfterFilteringByPrice} from '../../../mocks/hotels';
 import {HotelDataService} from '../data/services/hotel-data.service';
 import {of} from 'rxjs';
 import {RangePrice} from '../components/filters/types/range-price.type';
@@ -54,10 +54,8 @@ describe('FilterService', () => {
   });
 
   describe('filterHotels', () => {
-
-
     it('should filter hotels by price', (done: DoneFn) => {
-      fakeHotelDataService.getHotelsByAddress.and.returnValue(of(hotelsMock));
+      fakeHotelDataService.getHotelsByAddress.and.returnValue(of(hotelsMockForFilterService));
       const rangePrice: RangePrice = [50_000, 60_000];
 
       service.address$.next('');
