@@ -1,6 +1,11 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AboutHotelPageComponent } from './about-hotel-page.component';
+import {provideHttpClient} from '@angular/common/http';
+import {provideHttpClientTesting} from '@angular/common/http/testing';
+import {provideRouter} from '@angular/router';
+import {MainPageComponent} from '../main-page/main-page.component';
+import {RouterTestingModule} from '@angular/router/testing';
 
 describe('AboutHotelPageComponent', () => {
   let component: AboutHotelPageComponent;
@@ -8,10 +13,15 @@ describe('AboutHotelPageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AboutHotelPageComponent]
+      imports: [AboutHotelPageComponent],
+      providers: [
+        provideHttpClient(),
+        provideHttpClientTesting(),
+        provideRouter([])
+      ]
     })
     .compileComponents();
-    
+
     fixture = TestBed.createComponent(AboutHotelPageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
