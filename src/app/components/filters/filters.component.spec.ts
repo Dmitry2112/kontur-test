@@ -1,8 +1,8 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
-
 import {FiltersComponent} from './filters.component';
 import {provideHttpClient} from '@angular/common/http';
 import {provideHttpClientTesting} from '@angular/common/http/testing';
+import {By} from '@angular/platform-browser';
 
 describe('FiltersComponent', () => {
   let component: FiltersComponent;
@@ -25,5 +25,10 @@ describe('FiltersComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should render ".filters"', () => {
+    const filters = fixture.debugElement.query(By.css('.filters'));
+    expect(filters.nativeElement).not.toBeNull();
   });
 });
