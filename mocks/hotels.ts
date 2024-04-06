@@ -477,3 +477,49 @@ export const hotelsMockForHotelService: HotelModel[] = [
 ];
 
 export const rangePriceMock: RangePrice = [9_000, 280_000];
+
+export const hotelMock: HotelModel = {
+  hotelTitle: 'AZIMUT Сити Отель Олимпик Москва (Корптариф для Контура)',
+  address: 'Олимпийский проспект, 18/1',
+  thumbnailUrl: 'https://images.acase.ru/acase_images/9900035/343068687_A.jpg',
+  cityCentreDistance: 'Центр города - 3,24 км',
+  offers: [
+    {
+      title: 'Супериор одноместный',
+      mealTitle: 'С завтраком',
+      priceInRub: 50_000,
+      extraBeds: 0,
+      roomsRemained: 0,
+      imageUrl: 'assets/images/default-img.jpg',
+      fromDto(dto: OfferResponseModel) {}
+    },
+    {
+      title: 'Супериор одноместный',
+      mealTitle: 'С завтраком',
+      priceInRub: 55_000,
+      extraBeds: 0,
+      roomsRemained: 0,
+      imageUrl: 'assets/images/default-img.jpg',
+      fromDto(dto: OfferResponseModel) {}
+    },
+    {
+      title: 'Супериор одноместный',
+      mealTitle: 'С завтраком',
+      priceInRub: 51_000,
+      extraBeds: 0,
+      roomsRemained: 0,
+      imageUrl: 'assets/images/default-img.jpg',
+      fromDto(dto: OfferResponseModel) {}
+    },
+    {
+      title: 'Супериор одноместный',
+      mealTitle: 'С завтраком',
+      priceInRub: 100_000,
+      extraBeds: 0,
+      roomsRemained: 0,
+      imageUrl: 'assets/images/default-img.jpg',
+      fromDto(dto: OfferResponseModel) {}
+    }
+  ],
+  fromDto(dto: HotelResponseModel) {}
+};
