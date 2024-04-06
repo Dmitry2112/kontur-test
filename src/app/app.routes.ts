@@ -1,7 +1,4 @@
 import {Routes} from '@angular/router';
-import {MainPageComponent} from './pages/main-page/main-page.component';
-import {NotFoundPageComponent} from './pages/not-found-page/not-found-page.component';
-import {AboutHotelPageComponent} from './pages/about-hotel-page/about-hotel-page.component';
 
 export const routes: Routes = [
   {
@@ -11,14 +8,14 @@ export const routes: Routes = [
   },
   {
     path: 'app',
-    component: MainPageComponent
+    loadComponent: () => import('./pages/main-page/main-page.component').then(c => c.MainPageComponent)
   },
   {
     path: 'hotels/:hotelTitle',
-    component: AboutHotelPageComponent
+    loadComponent: () => import('./pages/about-hotel-page/about-hotel-page.component').then(c => c.AboutHotelPageComponent)
   },
   {
     path: '**',
-    component: NotFoundPageComponent
+    loadComponent: () => import('./pages/not-found-page/not-found-page.component').then(c => c.NotFoundPageComponent)
   }
 ];
