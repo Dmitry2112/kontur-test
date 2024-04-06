@@ -1,11 +1,23 @@
-.not-found-container {
+.not-found-page {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-}
+  gap: 1.5rem;
+  padding: 2rem;
 
-.main-page-link {
-  text-decoration: none;
-  color: var(--text-01);
+  &__title {
+    font: var(--font-heading-1);
+  }
+
+  &__link-to-main {
+    text-decoration: none;
+    color: var(--text-01);
+    opacity: 0.75;
+    transition-duration: 0.3s;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
 }
