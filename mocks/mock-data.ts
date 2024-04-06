@@ -2,6 +2,7 @@ import {HotelModel} from '../src/app/data/models/hotel.model';
 import {OfferResponseModel} from '../src/app/data/response-models/offer.response-model.interface';
 import {HotelResponseModel} from '../src/app/data/response-models/hotel.response-model.interface';
 import {RangePrice} from '../src/app/components/filters/types/range-price.type';
+import {OfferModel} from '../src/app/data/models/offer.model';
 
 export const hotelsMockForFilterService: HotelModel[] = [
   {
@@ -523,3 +524,13 @@ export const hotelMock: HotelModel = {
   ],
   fromDto(dto: HotelResponseModel) {}
 };
+
+export const offerMock: OfferModel = {
+  title: 'Супериор одноместный',
+  mealTitle: 'С завтраком',
+  priceInRub: 100_000,
+  extraBeds: 1,
+  roomsRemained: 1,
+  imageUrl: 'assets/images/default-img.jpg',
+  fromDto(dto: OfferResponseModel) {}
+}

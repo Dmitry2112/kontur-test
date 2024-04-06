@@ -4,7 +4,7 @@ import {provideHttpClient} from '@angular/common/http';
 import {provideHttpClientTesting} from '@angular/common/http/testing';
 import {provideRouter} from '@angular/router';
 import {HotelDataService} from '../../data/services/hotel-data.service';
-import {hotelMock} from '../../../../mocks/hotels';
+import {hotelMock} from '../../../../mocks/mock-data';
 import {By} from '@angular/platform-browser';
 import {of} from 'rxjs';
 

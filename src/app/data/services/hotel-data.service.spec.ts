@@ -2,7 +2,7 @@ import {TestBed} from '@angular/core/testing';
 import {HotelDataService} from './hotel-data.service';
 import {provideHttpClient} from '@angular/common/http';
 import {provideHttpClientTesting} from '@angular/common/http/testing';
-import {hotelsMockForHotelService, rangePriceMock} from '../../../../mocks/hotels';
+import {hotelsMockForHotelService, rangePriceMock} from '../../../../mocks/mock-data';
 import {of} from 'rxjs';
 
 describe('HotelDataService', () => {

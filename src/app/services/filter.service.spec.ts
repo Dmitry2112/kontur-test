@@ -3,7 +3,7 @@ import {FilterService} from './filter.service';
 import {provideHttpClient} from '@angular/common/http';
 import {provideHttpClientTesting} from '@angular/common/http/testing';
 import {FilterFormValues} from '../components/filters/types/filter-form-values.type';
-import {hotelsMockForFilterService, hotelsMockAfterFilteringByAddress, hotelsMockAfterFilteringByPrice} from '../../../mocks/hotels';
+import {hotelsMockForFilterService, hotelsMockAfterFilteringByAddress, hotelsMockAfterFilteringByPrice} from '../../../mocks/mock-data';
 import {HotelDataService} from '../data/services/hotel-data.service';
 import {of} from 'rxjs';
 import {RangePrice} from '../components/filters/types/range-price.type';
