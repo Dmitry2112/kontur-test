@@ -1,27 +1,44 @@
 # KonturTest
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.2.0.
+Тестовое задание в Контур.
 
-## Development server
+### Описание проекта
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Приложение представляет собой сервис командировок в котором пользователи могут искать отели, смотреть варианты номеров и делиться своими результатами поиска.
 
-## Code scaffolding
+Для поиска отелей можно использовать фильтры по адресу и стоимости.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### Запуск приложения
 
-## Build
+Выполните `npm run start-all` в терминале и перейдите по адресу `http://localhost:4200/`.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+### Запуск unit-тестов
 
-## Running unit tests
+Выполните `npm run test` в терминале для запуска unit-тестов с помощью [Karma](https://karma-runner.github.io).
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### Технологии
 
-## Running end-to-end tests
+- angular 17
+- rxjs
+- ts
+- [Taiga ui](https://taiga-ui.dev/) (uikit)
+- jasmine, Karma (unit-тесты)
+- json-server
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+### Демо
 
-## Further help
+1) Список отелей в алфавитном порядке
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+![hotels](demo/hotels.png)
+
+2) Информация об одном отеле
+
+![about-hotel](demo/about-hotel.png)
+
+3) Фильтрация по адресу и стоимости номера
+
+![filtering](demo/filtering.png)
+
+4) Видео демонстрация
+
+![demo](demo/demo.gif)
