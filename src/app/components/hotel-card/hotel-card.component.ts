@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, computed, Inject, input, OnInit, signal} from '@angular/core';
+import {ChangeDetectionStrategy, Component, computed, Inject, input, signal} from '@angular/core';
 import {HotelModel} from '../../data/models/hotel.model';
 import {AsyncPipe, NgForOf, NgIf} from '@angular/common';
 import {OfferCardComponent} from '../offer-card/offer-card.component';
@@ -22,7 +22,7 @@ import {TuiAlertService} from '@taiga-ui/core';
   styleUrl: './hotel-card.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class HotelCardComponent implements OnInit {
+export class HotelCardComponent {
   public hotel = input.required<HotelModel>();
   public imgUrl = computed(() =>
     this._sanitizer.bypassSecurityTrustResourceUrl(`${this.hotel().thumbnailUrl}`)
@@ -37,9 +37,6 @@ export class HotelCardComponent implements OnInit {
     @Inject(NAVIGATOR) private _navigator: Navigator,
     @Inject(LOCATION) private _location: Location
   ) {}
-
-  public ngOnInit(): void {
-  }
 
   public copyHotelLink(hotelTitle: string) {
     this._navigator.clipboard.writeText(`${this._location.protocol}//${this._location.host}/hotels/${hotelTitle}`)
