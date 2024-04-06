@@ -534,3 +534,141 @@ export const offerMock: OfferModel = {
   imageUrl: 'assets/images/default-img.jpg',
   fromDto(dto: OfferResponseModel) {}
 }
+
+export const hotelsMockForHotelsComponent: HotelModel[] = [
+  {
+    hotelTitle: 'AZIMUT Сити Отель Олимпик Москва (Корптариф для Контура)',
+    address: 'Олимпийский проспект, 18/1',
+    thumbnailUrl: 'https://images.acase.ru/acase_images/9900035/343068687_A.jpg',
+    cityCentreDistance: 'Центр города - 3,24 км',
+    offers: [
+      {
+        title: 'Супериор одноместный',
+        mealTitle: 'С завтраком',
+        priceInRub: 50_000,
+        extraBeds: 0,
+        roomsRemained: 0,
+        imageUrl: 'assets/images/default-img.jpg',
+        fromDto(dto: OfferResponseModel) {}
+      },
+      {
+        title: 'Супериор одноместный',
+        mealTitle: 'С завтраком',
+        priceInRub: 55_000,
+        extraBeds: 0,
+        roomsRemained: 0,
+        imageUrl: 'assets/images/default-img.jpg',
+        fromDto(dto: OfferResponseModel) {}
+      },
+      {
+        title: 'Супериор одноместный',
+        mealTitle: 'С завтраком',
+        priceInRub: 51_000,
+        extraBeds: 0,
+        roomsRemained: 0,
+        imageUrl: 'assets/images/default-img.jpg',
+        fromDto(dto: OfferResponseModel) {}
+      },
+      {
+        title: 'Супериор одноместный',
+        mealTitle: 'С завтраком',
+        priceInRub: 100_000,
+        extraBeds: 0,
+        roomsRemained: 0,
+        imageUrl: 'assets/images/default-img.jpg',
+        fromDto(dto: OfferResponseModel) {}
+      }
+    ],
+    fromDto(dto: HotelResponseModel) {}
+  },
+  {
+    hotelTitle: 'Борис Годунов',
+    address: 'Нижний Кисельный переулок, 4',
+    thumbnailUrl: 'https://images.acase.ru/acase_images/1303628/2669635940_A.jpg',
+    cityCentreDistance: 'Центр города - 1,07 км',
+    offers: [
+      {
+        title: 'Двухместный стандарт с одной кроватью',
+        mealTitle: 'С завтраком',
+        priceInRub: 60_000,
+        extraBeds: 0,
+        roomsRemained: 0,
+        imageUrl: 'assets/images/default-img.jpg',
+        fromDto(dto: OfferResponseModel) {}
+      },
+      {
+        title: 'Супериор одноместный',
+        mealTitle: 'С завтраком',
+        priceInRub: 66_000,
+        extraBeds: 0,
+        roomsRemained: 0,
+        imageUrl: 'assets/images/default-img.jpg',
+        fromDto(dto: OfferResponseModel) {}
+      },
+      {
+        title: 'Супериор одноместный',
+        mealTitle: 'С завтраком',
+        priceInRub: 10_000,
+        extraBeds: 0,
+        roomsRemained: 0,
+        imageUrl: 'assets/images/default-img.jpg',
+        fromDto(dto: OfferResponseModel) {}
+      },
+      {
+        title: 'Супериор одноместный',
+        mealTitle: 'С завтраком',
+        priceInRub: 67_000,
+        extraBeds: 0,
+        roomsRemained: 0,
+        imageUrl: 'assets/images/default-img.jpg',
+        fromDto(dto: OfferResponseModel) {}
+      }
+    ],
+    fromDto(dto: HotelResponseModel) {}
+  },
+  {
+    hotelTitle: 'Сенатор Дизайн Отель',
+    address: 'Лубянский проезд 7, строение 1',
+    thumbnailUrl: 'https://images.acase.ru/acase_images/1317664/238503233_A.jpg',
+    cityCentreDistance: 'Центр города - 0,81 км',
+    offers: [
+      {
+        title: 'Standard room',
+        mealTitle: 'С завтраком',
+        priceInRub: 80_000,
+        extraBeds: 0,
+        roomsRemained: 0,
+        imageUrl: 'assets/images/default-img.jpg',
+        fromDto(dto: OfferResponseModel) {}
+      },
+      {
+        title: 'Standard room',
+        mealTitle: 'С завтраком',
+        priceInRub: 84_000,
+        extraBeds: 0,
+        roomsRemained: 0,
+        imageUrl: 'assets/images/default-img.jpg',
+        fromDto(dto: OfferResponseModel) {}
+      },
+      {
+        title: 'Standard room',
+        mealTitle: 'С завтраком',
+        priceInRub: 22_000,
+        extraBeds: 0,
+        roomsRemained: 0,
+        imageUrl: 'assets/images/default-img.jpg',
+        fromDto(dto: OfferResponseModel) {}
+      },
+      {
+        title: 'Супериор одноместный',
+        mealTitle: 'С завтраком',
+        priceInRub: 100_000,
+        extraBeds: 0,
+        roomsRemained: 0,
+        imageUrl: 'assets/images/default-img.jpg',
+        fromDto(dto: OfferResponseModel) {}
+      }
+    ],
+    fromDto(dto: HotelResponseModel) {}
+  }
+];

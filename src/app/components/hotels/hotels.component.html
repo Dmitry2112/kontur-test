@@ -4,6 +4,7 @@
 >
   <ng-container *ngIf="hotels.length > 0; else emptyData">
     <li
+      class="hotels__item"
       *ngFor="let hotel of hotels"
     >
       <app-hotel-card [hotel]="hotel"></app-hotel-card>
